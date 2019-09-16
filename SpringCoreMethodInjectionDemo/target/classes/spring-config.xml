@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+
+	<!-- Bean declaration for BeansWithoutMethodInjection starts here -->
+
+	<bean id="prototypeBean1"
+		class="com.javaLive.beansWithoutMethodInjection.PrototypeBean1"
+		scope="prototype">
+		<property name="message" value="Test Message" />
+	</bean>
+	<bean id="singletonBean1"
+		class="com.javaLive.beansWithoutMethodInjection.SingletonBean1">
+		<property name="prototypeBean" ref="prototypeBean1" />
+	</bean>
+	
+	<!-- Bean declaration for BeansWithoutMethodInjection ends here -->
+
+<!--=============================================================================-->
+
+	<!-- Bean declaration for BeansWithMethodInjection starts here -->
+
+	<bean id="prototypeBean2"
+		class="com.javaLive.beansWithMethodInjection.PrototypeBean2"
+		scope="prototype">
+		<property name="message" value="Test Message" />
+	</bean>
+	<bean id="singletonBean"
+		class="com.javaLive.beansWithMethodInjection.SingletonBean2">
+		<lookup-method bean="prototypeBean2"
+			name="getPrototypeBean" />
+	</bean>
+
+	<!-- Bean declaration for BeansWithMethodInjection ends here -->
+
+</beans>
