@@ -15,7 +15,7 @@ public class MainClassWithMethodInjection
     public static void main( String[] args )
     {
     	AbstractApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
-    	SingletonBean2 singleton = (SingletonBean2)context.getBean("singletonBean");             
+    	SingletonBean2 singleton = (SingletonBean2)context.getBean("singletonBean2");   
         PrototypeBean2 prototypeBeanA = singleton.getPrototypeBean();
         PrototypeBean2 prototypeBeanB = singleton.getPrototypeBean();             
         System.out.println(prototypeBeanA);
